@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purple Dashboard</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --bg-mid: #1e293b;
+    --text-main: #f8fafc;
+    --text-soft: #cbd5e1;
+    --surface: rgba(255, 255, 255, 0.1);
+    --surface-line: rgba(255, 255, 255, 0.28);
+    --field-bg: rgba(255, 255, 255, 0.1);
+    --accent-a: #ff7a18;
+    --accent-b: #00c2ff;
+    --accent-c: #48bb78;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-main);
+    background:
+        radial-gradient(circle at 12% 15%, rgba(255, 122, 24, 0.3), transparent 42%),
+        radial-gradient(circle at 84% 10%, rgba(0, 194, 255, 0.3), transparent 40%),
+        radial-gradient(circle at 70% 88%, rgba(72, 187, 120, 0.22), transparent 44%),
+        linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
+}
+
+.layout {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 22px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    margin: 0;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: -0.5px;
+    font-size: clamp(1.35rem, 4vw, 2rem);
+}
+
+.chip {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 7px 14px;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+}
+
+.container {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+}
+
+.panel {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+    border: 1px solid var(--surface-line);
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 22px 65px rgba(96, 89, 89, 0.35);
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.85s ease;
+}
+
+.card-title {
+    margin: 0 0 16px;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.summary-card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+}
+
+.summary-card strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+}
+
+.summary-card span {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    margin-bottom: 6px;
+    color: #e2e8f0;
+    font-size: 0.86rem;
+}
+
+select,
+input {
+    width: 100%;
+    padding: 12px 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: var(--field-bg);
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+    color: #98aac3;
+}
+
+select:focus,
+input:focus {
+    border-color: rgba(0, 194, 255, 0.9);
+    box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
+}
+
+button {
+    width: 100%;
+    margin-top: 14px;
+    padding: 12px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #04111f;
+    background: linear-gradient(98deg, var(--accent-a), #ffd166);
+    box-shadow: 0 10px 26px rgba(255, 122, 24, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(255, 122, 24, 0.45);
+}
+
+.note {
+    margin: 12px 0 0;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 900px) {
+    .container {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .layout {
+        padding: 14px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .panel {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .summary {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<main class="layout">
+    <header class="header">
+        <h2>Welcome to Purple Dashboard</h2>
+        <div class="chip">Event Planner Console</div>
+    </header>
+
+    <section class="container">
+        <article class="panel">
+            <h3 class="card-title">Your Planning Snapshot</h3>
+            <div class="summary">
+                <div class="summary-card">
+                    <strong>08</strong>
+                    <span>Active Drafts</span>
+                </div>
+                <div class="summary-card">
+                    <strong>14</strong>
+                    <span>Vendors Connected</span>
+                </div>
+                <div class="summary-card">
+                    <strong>96%</strong>
+                    <span>On-Time Planning</span>
+                </div>
+            </div>
+            <p class="note">Set your event preferences to receive optimized recommendations and timelines.</p>
+        </article>
+
+        <article class="panel">
+            <h3 class="card-title">Event Preferences</h3>
+            <div class="form-grid">
+                <div class="field full">
+                    <label for="eventType">Select Event Type</label>
+                    <select id="eventType">
+                        <option>Wedding</option>
+                        <option>Birthday</option>
+                        <option>Corporate</option>
+                        <option>College Event</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="guests">Number of Guests</label>
+                    <input id="guests" type="number" placeholder="Enter number">
+                </div>
+
+                <div class="field">
+                    <label for="budget">Budget (INR)</label>
+                    <input id="budget" type="number" placeholder="Enter budget">
+                </div>
+
+                <div class="field">
+                    <label for="location">Location</label>
+                    <input id="location" type="text" placeholder="Enter city">
+                </div>
+
+                <div class="field">
+                    <label for="eventDate">Date</label>
+                    <input id="eventDate" type="date">
+                </div>
+            </div>
+
+            <button onclick="submitForm()">Save Preferences</button>
+        </article>
+    </section>
+</main>
+
+<script>
+function submitForm() {
+    let event = document.getElementById("eventType").value;
+
+    alert("Event Selected: " + event + "\nYour preferences saved.");
+}
+</script>
+
+</body>
+</html>

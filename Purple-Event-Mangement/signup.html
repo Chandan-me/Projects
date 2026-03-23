@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purple Signup</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --bg-mid: #1e293b;
+    --text-main: #f8fafc;
+    --text-soft: #cbd5e1;
+    --surface-line: rgba(255, 255, 255, 0.28);
+    --field-bg: rgba(255, 255, 255, 0.1);
+    --accent-a: #00c2ff;
+    --accent-b: #48bb78;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-main);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(0, 194, 255, 0.35), transparent 40%),
+        radial-gradient(circle at 85% 14%, rgba(72, 187, 120, 0.3), transparent 40%),
+        linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
+}
+
+.card {
+    width: min(100%, 620px);
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+    border: 1px solid var(--surface-line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.85s ease;
+}
+
+.brand {
+    margin: 0;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.92rem;
+    color: var(--text-soft);
+}
+
+h2 {
+    margin: 10px 0 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.1;
+}
+
+.subtext {
+    margin: 0 0 18px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    margin-bottom: 6px;
+    font-size: 0.86rem;
+    color: #e2e8f0;
+}
+
+input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: var(--field-bg);
+    color: var(--text-main);
+    border-radius: 12px;
+    padding: 12px 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+    color: #c1d3ea;
+}
+
+input:focus {
+    border-color: rgba(0, 194, 255, 0.9);
+    box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
+}
+
+button {
+    width: 100%;
+    margin-top: 16px;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #04111f;
+    background: linear-gradient(98deg, var(--accent-a), var(--accent-b));
+    box-shadow: 0 10px 28px rgba(0, 194, 255, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(0, 194, 255, 0.4);
+}
+
+.login-note {
+    text-align: center;
+    margin: 14px 0 0;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+<p class="brand">Purple EVENTS</p>
+<h2>Create Account</h2>
+<p class="subtext">Join Purple and start planning events with a modern dashboard experience.</p>
+
+<form class="form-grid">
+    <div class="field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" placeholder="Enter first name">
+    </div>
+
+    <div class="field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" placeholder="Enter last name">
+    </div>
+
+    <div class="field full">
+        <label for="dob">Date of Birth</label>
+        <input id="dob" type="date">
+    </div>
+
+    <div class="field full">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com">
+    </div>
+
+    <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Create a password">
+    </div>
+
+    <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" placeholder="Re-enter password">
+    </div>
+</form>
+
+<button type="button">Sign Up</button>
+
+<p class="login-note">
+Already have account? <a href="login.html">Login</a>
+</p>
+
+</div>
+
+</body>
+</html>

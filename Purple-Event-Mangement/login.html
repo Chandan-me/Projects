@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purple Login</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&display=swap');
+
+:root {
+    --bg-dark: #0f172a;
+    --bg-mid: #1e293b;
+    --text-main: #f8fafc;
+    --text-soft: #cbd5e1;
+    --surface: rgba(255, 255, 255, 0.12);
+    --surface-line: rgba(255, 255, 255, 0.28);
+    --field-bg: rgba(255, 255, 255, 0.1);
+    --accent-a: #ff7a18;
+    --accent-b: #00c2ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-main);
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 122, 24, 0.35), transparent 42%),
+        radial-gradient(circle at 82% 10%, rgba(0, 194, 255, 0.3), transparent 40%),
+        linear-gradient(135deg, var(--bg-dark), var(--bg-mid));
+}
+
+.card {
+    width: min(100%, 420px);
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+    border: 1px solid var(--surface-line);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.8s ease;
+}
+
+.brand {
+    margin: 0;
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 1px;
+    font-size: 0.92rem;
+    color: var(--text-soft);
+}
+
+h2 {
+    margin: 10px 0 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2rem);
+    line-height: 1.1;
+}
+
+.subtext {
+    margin: 0 0 18px;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+}
+
+.field {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.86rem;
+    color: #e2e8f0;
+}
+
+input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: var(--field-bg);
+    color: var(--text-main);
+    border-radius: 12px;
+    padding: 12px 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+    color: #c1d3ea;
+}
+
+input:focus {
+    border-color: rgba(0, 194, 255, 0.9);
+    box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.2);
+}
+
+.meta-row {
+    display: flex;
+    justify-content: flex-end;
+    margin: 4px 0 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 0.88rem;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #02111e;
+    background: linear-gradient(98deg, var(--accent-a), #ffd166);
+    box-shadow: 0 10px 26px rgba(255, 122, 24, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(255, 122, 24, 0.45);
+}
+
+.signup-note {
+    text-align: center;
+    margin: 16px 0 0;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+}
+
+.signup-note a {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 22px;
+        border-radius: 18px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+<p class="brand">Purple EVENTS</p>
+<h2>Welcome Back</h2>
+<p class="subtext">Sign in to manage your events, bookings, and team schedule.</p>
+
+<div class="field">
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="Enter your username">
+</div>
+
+<div class="field">
+    <label for="password">Password</label>
+    <input id="password" type="password" placeholder="Enter your password">
+</div>
+
+<div class="meta-row">
+    <a href="forgot page.html">Forgot Password?</a>
+</div>
+
+<button onclick="login()">Login</button>
+
+<script>
+function login() {
+    // simple redirect (no backend)
+    window.location.href = "dashboard.html";
+}
+</script>
+
+<p class="signup-note">New user? <a href="signup.html">Sign up</a></p>
+
+</div>
+
+</body>
+</html>
