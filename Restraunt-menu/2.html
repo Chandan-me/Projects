@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #e79a9a, #e7a98c);
+}
+
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background: #eee;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+
+h1, h2, h3 {
+    text-align: center;
+    color: #bad411;
+}
+
+
+.line {
+    height: 3px;
+    background: #28d71b;
+    width: 90%;
+    margin: 10px auto 20px;
+}
+
+
+.menu {
+    list-style: none;
+    padding: 20px;
+}
+
+.menu li {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    color: #333; 
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.menu li:hover {
+    background: #55ff3b;
+    padding-left: 450px;
+}
+
+
+.card {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+.card ul {
+    list-style: circle;
+    padding-left: 20px;
+}
+
+
+.starters li {
+    color: #23bc2b;
+}
+
+
+.main li {
+    color: #1565c0;
+    padding-left: 450px;
+}
+
+
+.card ul li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card ul li:hover {
+    background: #ffeb3b;
+    padding-left: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+   
+    <h1>BREAKFAST</h1>
+
+    <ul class="menu">
+        <li>Scrambled Eggs with Toast & Butter</li>
+        <li>Omelet (with cheese, ham, or vegetables)</li>
+        <li>Pancakes or Waffles with Syrup & Fruit</li>
+        <li>Yogurt with Granola & Honey</li>
+        <li>Fresh Fruit Platter</li>
+        <li>Cereal with Milk</li>
+    </ul>
+
+ 
+    <h2>Indian</h2>
+    <div class="line"></div>
+
+    <ul class="menu">
+        <li>Idli with Sambhar & Chutney</li>
+        <li>Dosa (various fillings)</li>
+        <li>Upma</li>
+        <li>Uttapam</li>
+        <li>Paratha with Aloo or Paneer</li>
+    </ul>
+
+    <h1>LUNCH / DINNER</h1>
+
+    
+    <h3>Starters</h3>
+    <div class="line"></div>
+
+    <div class="card">
+        <ul class="starters">
+            <li>Soup of the Day (Vegetable or Chicken)</li>
+            <li>Spring Rolls (Vegetarian or Chicken)</li>
+            <li>Vegetable Pakora</li>
+            <li>Chicken Tikka</li>
+            <li>Samosas</li>
+        </ul>
+    </div>
+
+    
+    <h3>Main Courses:</h3>
+    <div class="line"></div>
+    
+
+    <div class="card">
+        <h4>Indian</h4>
+        <ul class="main">
+            <li>Butter Chicken</li>
+            <li>Vegetable Biryani</li>
+            <li>Dal Makhani</li>
+            <li>Paneer Butter Masala</li>
+            <li>Chicken Tikka Masala</li>
+            <li>Chicken Korma</li>
+            <li>Masala Dosa</li>
+            <li>Biryani</li>
+        </ul>
+    </div>
+
+
+    <h3>Beverages</h3>
+    <div class="line"></div>
+
+    <h4>Hot</h4>
+    <div class="card">
+        <ul>
+            <li>Coffee (Espresso, Latte, Cappuccino)</li>
+            <li>Tea (Black, Green, Herbal)</li>
+            <li>Hot Chocolate</li>
+        </ul>
+    </div>
+
+    <h4>Cold</h4>
+    <div class="card">
+        <ul>
+            <li>Juices (Orange, Pineapple, Mango)</li>
+            <li>Smoothies</li>
+            <li>Lassi</li>
+            <li>Mocktails</li>
+            <li>Soft Drinks</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Menu</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ddd;
+}
+
+
+.header {
+    background: #37bb16;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+.section-title {
+    width: 70%;
+    margin: 40px auto 20px;
+    background: #dd6583;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
+
+.menu-grid {
+    width: 70%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+
+.card {
+    background: #eee;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+
+.card:hover {
+    background: #e3f703;
+    transform: translateY(-5px);
+}
+
+
+.card h3 {
+    margin: 0;
+    color: #d9534f;
+}
+
+
+.card p {
+    margin: 10px 0;
+    color: #555;
+}
+
+
+.price {
+    font-weight: bold;
+    color: #333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">Restaurant Menu</div>
+
+
+<div class="section-title">Starters</div>
+
+<div class="menu-grid">
+    <div class="card">
+        <h3>Bruschetta</h3>
+        <p>Grilled bread with tomatoes, garlic, and basil.</p>
+        <div class="price">368</div>
+    </div>
+
+    <div class="card">
+        <h3>Caesar Salad</h3>
+        <p>Fresh romaine lettuce with Caesar dressing.</p>
+        <div class="price">699</div>
+    </div>
+</div>
+
+
+<div class="section-title">Main Course</div>
+
+<div class="menu-grid">
+    <div class="card">
+        <h3>Grilled Salmon</h3>
+        <p>Served with lemon butter sauce and vegetables.</p>
+        <div class="price">1,299</div>
+    </div>
+
+    <div class="card">
+        <h3>Steak & Fries</h3>
+        <p>Juicy steak with crispy golden fries.</p>
+        <div class="price">1,599</div>
+    </div>
+</div>
+
+<div class="section-title">Desserts</div>
+
+<div class="menu-grid">
+    <div class="card">
+        <h3>Chocolate Cake</h3>
+        <p>Rich and moist chocolate cake with fudge frosting.</p>
+        <div class="price">499</div>
+    </div>
+
+    <div class="card">
+        <h3>Ice Cream Sundae</h3>
+        <p>Vanilla ice cream with chocolate syrup and nuts.</p>
+        <399 class="price">399</div>
+    </div>
+</div>
+
+
+<div class="section-title">Drinks</div>
+
+<div class="menu-grid">
+    <div class="card">
+        <h3>Coffee</h3>
+        <p>Freshly brewed hot coffee.</p>
+        <div class="price">299</div>
+    </div>
+
+    <div class="card">
+        <h3>Lemonade</h3>
+        <p>Refreshing homemade lemonade.</p>
+        <div class="price">249</div>
+    </div>
+</div>
+
+</body>
+</html>
