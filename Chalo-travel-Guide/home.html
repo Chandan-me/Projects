@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chalo | Plan Your Next Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FFF9F2; color: #2D2424; }
+        h1, h2, h3 { font-family: 'Syne', sans-serif; }
+        .warm-gradient { background: linear-gradient(135deg, #FF6B35 0%, #F7B733 100%); }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 glass border-b border-orange-100 flex justify-between items-center">
+        <div class="text-2xl font-extrabold tracking-tighter text-[#FF6B35] cursor-pointer" onclick="showPage('landing')">C H A L O</div>
+        <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#" class="hover:text-[#FF6B35] transition">Explore</a>
+            <a href="#" onclick="showPage('dashboard')" class="hover:text-[#FF6B35] transition">My Trips</a>
+            <a href="#" class="hover:text-[#FF6B35] transition">Community</a>
+        </div>
+        <button class="bg-[#2D2424] text-white px-5 py-2 rounded-full font-semibold hover:bg-black transition">Sign In</button>
+    </nav>
+
+    <main id="landing-page" class="pt-24">
+        <section class="px-6 py-12 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-6xl md:text-8xl leading-none mb-6">Your next <span class="text-[#FF6B35]">journey</span> starts here.</h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-md">The modern way to plan, budget, and experience your travels without the stress of spreadsheets.</p>
+                
+                <div class="bg-white p-4 rounded-3xl shadow-xl border border-orange-50 flex flex-col md:flex-row gap-4">
+                    <div class="flex-1 flex items-center px-4 border-r border-gray-100">
+                        <i data-lucide="map-pin" class="text-orange-400 mr-2"></i>
+                        <input type="text" placeholder="From where?" class="w-full outline-none py-2">
+                    </div>
+                    <div class="flex-1 flex items-center px-4">
+                        <i data-lucide="plane-takeoff" class="text-orange-400 mr-2"></i>
+                        <input type="text" placeholder="To where?" class="w-full outline-none py-2">
+                    </div>
+                    <button onclick="showPage('dashboard')" class="warm-gradient text-white px-8 py-4 rounded-2xl font-bold hover:opacity-90 transition shadow-lg">
+                        Let's Go
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Beach" class="rounded-[2rem] shadow-2xl rotate-2 hover:rotate-0 transition duration-500">
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                        <i data-lucide="trending-down"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 uppercase font-bold">Smart Budget</p>
+                        <p class="font-bold">Save 20% on flights</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-[#FDF2E9]">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex justify-between items-end mb-12">
+                    <h2 class="text-4xl">Featured <span class="italic font-light">Escapes</span></h2>
+                    <button class="text-[#FF6B35] font-bold flex items-center">View all <i data-lucide="arrow-right" class="ml-1 w-4"></i></button>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="group cursor-pointer">
+                        <div class="overflow-hidden rounded-3xl mb-4 h-80">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        </div>
+                        <h3 class="text-xl font-bold">The Golden Temples of Kyoto</h3>
+                        <p class="text-gray-500">7 Days • Cultural Heritage</p>
+                    </div>
+                    </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 max-w-4xl mx-auto text-center">
+            <i data-lucide="quote" class="w-12 h-12 text-orange-200 mx-auto mb-6"></i>
+            <h2 class="text-3xl mb-8 leading-tight">"Chalo transformed my chaotic group trip to Iceland into a seamless adventure. The budget tracker is a lifesaver!"</h2>
+            <div class="flex items-center justify-center space-x-4">
+                <!-- <img src="https://i.pravatar.cc/150?u=sarah" class="w-12 h-12 rounded-full border-2 border-[#FF6B35]"> -->
+                <div class="text-left">
+                    <p class="font-bold"> Chandan N</p>
+                    <p class="text-sm text-gray-500">Digital Nomad</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="dashboard-page" class="hidden pt-24 min-h-screen bg-white">
+        <div class="max-w-7xl mx-auto px-6 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                <div>
+                    <div class="flex items-center space-x-2 text-sm text-[#FF6B35] font-bold mb-1">
+                        <i data-lucide="calendar" class="w-4"></i>
+                        <span>AUG 12 - AUG 19, 2026</span>
+                    </div>
+                    <h1 class="text-5xl">Bali Spiritual Retreat</h1>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="p-3 rounded-xl border border-gray-200 hover:bg-gray-50"><i data-lucide="share-2"></i></button>
+                    <button class="bg-[#FF6B35] text-white px-6 py-3 rounded-xl font-bold flex items-center">
+                        <i data-lucide="plus" class="mr-2"></i> Add Activity
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="bg-[#FFF9F2] p-8 rounded-[2.5rem] border border-orange-50">
+                        <h2 class="text-2xl mb-6 flex items-center">
+                            <i data-lucide="list-checks" class="mr-2 text-[#FF6B35]"></i> Itinerary Timeline
+                        </h2>
+                        
+                        <div class="space-y-10 relative before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-orange-100">
+                            <div class="relative pl-12">
+                                <div class="absolute left-0 top-1 w-8 h-8 bg-white border-4 border-[#FF6B35] rounded-full z-10"></div>
+                                <h3 class="font-bold text-lg mb-4">Day 1: Arrival & Ubud Bliss</h3>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-orange-50 flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="bg-blue-50 p-3 rounded-xl text-blue-500"><i data-lucide="plane-landing"></i></div>
+                                            <div>
+                                                <p class="font-semibold text-sm">Denpasar Airport (DPS)</p>
+                                                <p class="text-xs text-gray-400">10:30 AM • Private Transfer</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-bold">$45</span>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-orange-50 flex items-center justify-between">
+                                        <div class="flex items-center space-x-4">
+                                            <div class="bg-orange-50 p-3 rounded-xl text-orange-500"><i data-lucide="utensils"></i></div>
+                                            <div>
+                                                <p class="font-semibold text-sm">Lunch at Clear Cafe</p>
+                                                <p class="text-xs text-gray-400">01:00 PM • Healthy Organic</p>
+                                            </div>
+                                        </div>
+                                        <span class="text-sm font-bold">$18</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative pl-12 opacity-60">
+                                <div class="absolute left-0 top-1 w-8 h-8 bg-orange-100 rounded-full z-10"></div>
+                                <h3 class="font-bold text-lg mb-4 text-gray-400">Day 2: Sunrise Yoga & Falls</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded-[2.5rem] h-80 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <button class="bg-white text-[#2D2424] px-6 py-3 rounded-full font-bold shadow-2xl flex items-center">
+                                <i data-lucide="map" class="mr-2"></i> Open Interactive Map
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="bg-[#2D2424] text-white p-8 rounded-[2.5rem] shadow-xl">
+                        <h2 class="text-xl mb-6 flex items-center">
+                            <i data-lucide="pie-chart" class="mr-2 text-[#FF6B35]"></i> Budget Tracker
+                        </h2>
+                        <div class="mb-8">
+                            <p class="text-gray-400 text-sm mb-1">Total Spent</p>
+                            <p class="text-4xl font-bold">$1,420 <span class="text-sm font-normal text-gray-400">/ $2,500</span></p>
+                            <div class="w-full bg-gray-700 h-2 rounded-full mt-4 overflow-hidden">
+                                <div class="bg-[#FF6B35] h-full" style="width: 56%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="flex items-center"><i data-lucide="hotel" class="w-4 mr-2 text-blue-400"></i> Lodging</span>
+                                <span class="font-bold">$800</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="flex items-center"><i data-lucide="coffee" class="w-4 mr-2 text-orange-400"></i> Food</span>
+                                <span class="font-bold">$320</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="flex items-center"><i data-lucide="bus" class="w-4 mr-2 text-green-400"></i> Transport</span>
+                                <span class="font-bold">$300</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 p-6 rounded-[2rem] border border-blue-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-sm font-bold text-blue-800 uppercase">Bali Weather</p>
+                            <p class="text-2xl font-bold">29°C • Sunny</p>
+                        </div>
+                        <i data-lucide="sun" class="w-12 h-12 text-yellow-500"></i>
+                    </div>
+
+                    <div class="bg-purple-50 p-6 rounded-[2.5rem] border border-purple-100">
+                        <div class="flex items-center space-x-2 text-purple-600 mb-3">
+                            <i data-lucide="sparkles" class="w-5"></i>
+                            <span class="font-bold text-sm">AI Suggestion</span>
+                        </div>
+                        <p class="text-sm leading-relaxed text-purple-900 mb-4">"Based on your love for photography, the Tegallalang Rice Terraces are best visited at 7:30 AM for the softest light."</p>
+                        <button class="w-full py-3 bg-purple-600 text-white rounded-xl font-bold text-sm">Add to Day 2</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Simple SPA Navigation
+        function showPage(pageId) {
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('dashboard-page').classList.add('hidden');
+            
+            document.getElementById(pageId + '-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
