@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0d5c73;
+    color: white;
+}
+
+canvas {
+    position: fixed;
+    z-index: -1;
+}
+
+.wrapper {
+    width: 100%;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #1f5f73;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.section {
+    background: #7d858a;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.section.completed {
+    background: green;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 8px 0;
+}
+
+.gender {
+    display: flex;
+    gap: 10px;
+}
+
+.gender-card {
+    flex: 1;
+    background: #aaa;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gender-card.active {
+    background: blue;
+}
+
+.marital {
+    display: flex;
+    gap: 10px;
+}
+
+.marital-card {
+    flex: 1;
+    padding: 10px;
+    background: #aaa;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button {
+    padding: 12px;
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 10px;
+}
+
+.search-section {
+    max-width: 900px;
+    margin: 20px auto;
+    text-align: right;
+}
+
+.table-section {
+    max-width: 900px;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    background: white;
+    color: black;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: black;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+#noData {
+    display: none;
+    text-align: center;
+    color: red;
+}

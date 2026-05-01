@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Card</title>
+<link rel="stylesheet" href="1.css">
+</head>
+
+<body>
+
+<canvas id="fluid-bg"></canvas>
+
+<div class="wrapper">
+
+    <!-- FORM -->
+    <div class="container">
+
+        <h1>Employee Card</h1>
+
+        <!-- PERSONAL -->
+        <div class="section highlighting-section">
+            <h2>Personal Information</h2>
+
+            <div class="row">
+                <input id="firstName" placeholder="First Name">
+                <input id="lastName" placeholder="Last Name">
+            </div>
+
+            <input id="email" placeholder="Email">
+
+            <div class="gender">
+                <div class="gender-card" data="Male">👦 Male</div>
+                <div class="gender-card" data="Female">👩 Female</div>
+            </div>
+
+            <input placeholder="Father Name">
+            <input placeholder="Mother Name">
+        </div>
+
+        <!-- MARITAL -->
+        <div class="section">
+            <h2>Marital Status</h2>
+            <div class="marital">
+                <div class="marital-card">💼 Single</div>
+                <div class="marital-card">💍 Married</div>
+            </div>
+        </div>
+
+        <button id="saveBtn">Save</button>
+
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-section">
+        <input id="search" placeholder="Search employee...">
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <p id="noData">User not found ❌</p>
+    </div>
+
+</div>
+
+<script src="1.js"></script>
+</body>
+</html>

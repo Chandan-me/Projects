@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Data</title>
+<link rel="stylesheet" href="e.css">
+</head>
+<body>
+
+<canvas id="fluid-bg"></canvas>
+
+<div class="wrapper">
+    <div class="container">
+        <h1>Employee Card</h1>
+
+        <!-- FORM -->
+       
+         <h4 class="section-title">Personal Information</h4>
+         <div class="highlighting-section">
+        
+        <form    id="form" class="form">
+            <div class="name-row">
+                <div class="input-group">
+                    <input type="text" id="firstName" required>
+                    <label>First Name</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="lastName" required>
+                    <label>Last Name</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label>Email - ID</label>
+            </div>
+
+            <div class="gender" id="genderGroup">
+            <div class="gender-card" data="Male">👨 Male</div>
+        
+            <div class="gender-card" data="Female">👩 Female</div>
+            </div>
+
+             <div class="input-group">
+                <input type="text" id="fatherName" required>
+                <label>Father Name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="motherName" required>
+                <label>Mother Name</label>
+            </div>
+        </div>
+            <br>
+            <br>
+
+
+        <h4 class="section-title">Marital Status</h4>
+        <div class="highlighting-section">
+            
+            <div class="marital">
+                <div class="marital-card" data="Single">💼 Single</div>
+                <br>
+                <div class="marital-card" data="Married">💍 Married</div>
+            </div>
+            <br>
+            <br>
+            <div class="input-group">
+                <input type="text" id="spouseName">
+                <label>Spouse Name (if married)</label>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- <div class="highlighting-section"> -->
+
+            <h4 class="section-title">Address</h4>
+                    <div class="highlighting-section">
+
+            <div class="input-group">
+                <input type="text" id="street" required>
+                <label>House Number / Name</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="street2" required>
+                <label>Street Address</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="area" required>
+                <label>Area</label>
+            </div>
+
+            <div class="name-row">
+                <div class="input-group">
+                    <input type="text" id="city">
+                    <label>City</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="state">
+                    <label>State / Province</label>
+                </div>
+            </div>
+
+            <div class="name-row">
+                <div class="input-group">
+                    <input type="text" id="city">
+                    <label>Postal / Zip Code</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="state">
+                    <label>Country</label>
+                </div>
+            </div>
+
+                    </div>
+            
+                    <br>
+                    <br>
+            <h4 class="section-title">Phone Numbers</h4>
+            <div class="highlighting-section">
+            <div class="name-row">
+                <div class="input-group">
+                    <input type="tel" id="phone" required maxlength="10" pattern="\d{10}">
+                    <label>Phone Number</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="whatsappPhone" required maxlength="10" pattern="\d{10}">
+                    <label>WhatsApp Number</label>
+                </div>
+            </div>
+            </div>
+
+             <br>
+                    <br>
+
+              <h4 class="section-title">Verification</h4>
+              <div class="highlighting-section">
+            <div class="name-row">
+                <div class="input-group">
+                    <input type="tel" id="AadhaarNumber" maxlength="12"  required>
+                    <label>Aadhaar Number</label>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="PanNumber" maxlength="10"  required>
+                    <label>PAN Number</label>
+                </div>
+            </div>
+            
+             <div class="name-row">
+                <div class="input-group">
+                    <input type="date" id="dob" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="age" placeholder="Age" readonly>
+                </div>
+             </div>
+
+            </div>
+             <br>
+            <br>
+
+
+            <div class="file-upload">
+                         <h4 class="section-title">Upload Employee Photo</h4>
+                              <div class="highlighting-section">
+                 <div class="input-group">
+                <div class="file-drop">
+                        <input type="file" id="photo" accept="image/png, image/jpeg" style="display:flexbox;" required>
+                        <div class="file-drop-text">Browse Files<br><small>Drag and drop files here</small></div>
+                        <div class="file-preview" id="filePreview" style="display:none;">
+                            <div class="tick">✔</div>
+                            <div class="file-info">
+                                <div class="filename" id="fileName"></div>
+                                <a href="#" id="removeFile" class="remove-link">Remove</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+         </div>
+
+            <br>
+                <!-- STEP 2 -->
+                <h4 class="section-title">Job Information</h4>
+                <div class="highlighting-section">
+                
+                    <div class="input-group">
+                        <input type="text" id="role" required>
+                        <label>Job Role</label>
+                    </div>
+                <div class="input-group">
+                    <div class="custom-dropdown">
+        
+                    <select id="department">
+                        <option>Department type...</option>
+                        <option>HR</option>
+                        <option>IT</option>
+                        <option>Finance</option>
+                        <option>Marketing</option>
+                        <option>Sales</option>
+                        <option>Human Resources</option>
+                        <option>Engineering</option>
+                        <option>Technician</option>
+                        <option>Healthcare</option>
+                        <option>Administration</option>
+                        <option>Office Boy</option>
+                        <option>Driver</option>
+                    </select>
+                
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <select id="workType">
+                        <option>Work Type...</option>
+                        <option>Full-Time</option>
+                        <option>Part-Time</option>
+                        <option>Contract</option>
+                        <option>Remote</option>
+                    </select>
+                
+                </div>
+                    <label>Start Date</label>
+                    <input type="date" id="startDate">
+
+                    <div class="btn-row">
+                       
+                    </div>
+                </div>
+
+                    <!-- STEP 3 -->
+                <h4 class="section-title">Banking Information</h4>
+                <div class="highlighting-section">
+                    <label>Bank Name</label>
+                    <input id="bankName" placeholder="Enter bank name">
+
+                    <label>Account Number</label>
+                    <input id="accountNumber" placeholder="Enter account number">
+
+                    <label>IFSC Code</label>
+                    <input id="ifscCode" placeholder="Enter IFSC code">
+
+                    <label>Branch</label>
+                    <input id="branch" placeholder="Enter branch name">
+                </div>
+
+                <div class="btn-top">
+
+                    <button id="resetBtn">Reset</button>
+
+                    <button id="draftBtn">Save Draft</button>
+
+                </div>
+
+                <button id="saveBtn">Add Employee</button>
+                    
+        </form>
+</div>
+
+<!--=======================================================================================-->
+        <div class="search-section">
+            <input type="text" id="search" placeholder="Search by name or ID...">
+        </div>
+        <!-- TABLE -->
+    <div class="table-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th style="cursor:pointer;" onclick="sortByName()">Name ⬍</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <!-- <th>Photo</th> -->
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        
+    </div>
+<!-- </div> -->
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-box">
+        <span id="close">&times;</span>
+        <h3>Edit Employee details</h3>
+
+        <div class="name-row">
+            <div class="input-group">
+                <input type="text" id="editFirstName">
+                <label>First Name</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="editLastName">
+                <label>Last Name</label>
+            </div>
+        </div>
+<br>
+        <div class="input-group">
+            <input type="text" id="editRole">
+            <label>Role</label>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="email" id="editEmail">
+            <label>Email</label>
+        </div>
+ 
+            <div class="gender" id="editGenderGroup">
+                <div class="gender-card" data-gender="Male">👨 Male</div>
+                <div class="gender-card" data-gender="Female">👩 Female</div>
+            </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editFatherName">
+            <label>Father Name</label>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editMotherName">
+            <label>Mother Name</label>
+        </div>
+ <br>
+        <h4 class="section-title">Marital Status</h4>
+        <div class="marital" id="editMaritalGroup">
+            <div class="marital-card" data-marital="Single">💼 Single</div>
+             <br>
+            <div class="marital-card" data-marital="Married">💍 Married</div>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editSpouseName">
+            <label>Spouse Name (if married)</label>
+        </div>
+ <br>
+        <h4 class="section-title">Address</h4>
+        <div class="input-group">
+            <input type="text" id="editStreet">
+            <label>House Number / Name</label>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editArea">
+            <label>Area</label>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editStreet2">
+            <label>Street Address</label>
+        </div>
+ <br>
+        <div class="name-row">
+            <div class="input-group">
+                <input type="text" id="editCity">
+                <label>City</label>
+            </div>
+            <div class="input-group">
+                <input type="text" id="editState">
+                <label>State / Province</label>
+            </div>
+        </div>
+ <br>
+        <div class="input-group">
+            <input type="text" id="editPostal">
+            <label>Postal / Zip Code</label>
+        </div>
+ <br>
+        <h4 class="section-title">Phone Numbers</h4>
+        <div class="name-row">
+            <div class="input-group">
+                <input type="tel" id="editPhone" maxlength="10">
+                <label>Phone Number</label>
+            </div>
+            <div class="input-group">
+                <input type="tel" id="editWhatsappPhone" maxlength="10">
+                <label>WhatsApp Number</label>
+            </div>
+        </div>
+ <br>
+        <h4 class="section-title">Verification</h4>
+        <div class="name-row">
+            <div class="input-group">
+                <input type="tel" id="editAadhaarNumber" maxlength="12">
+                <label>Aadhaar Number</label>
+            </div>
+            <div class="input-group">
+                <input type="tel" id="editPanNumber" maxlength="10">
+                <label>PAN Number</label>
+            </div>
+        </div>
+
+        <div class="name-row">
+            <div class="input-group">
+                <input type="date" id="editDob">
+                
+            </div>
+            <div class="input-group">
+                <input type="text" id="editAge" placeholder="Age" readonly>
+            </div>
+        </div>
+
+        <h4 class="section-title"> Employee Photo</h4>
+        <div class="file-upload">
+            <div class="file-drop">
+                <input type="file" id="editPhoto" accept="image/png, image/jpeg">
+                <div class="file-drop-text">Browse Files<br><small>Drag and drop files here</small></div>
+                <div class="file-preview" id="editFilePreview" style="display:none;">
+                    <div class="tick">✔</div>
+                    <div class="file-info">
+                        <div class="filename" id="editFileName"></div>
+                        <a href="#" id="editRemoveFile" class="remove-link">Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-top:12px;">
+            <button id="updateBtn" class="btn">Update</button>
+            <button id="cancelBtn" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="e.js"></script>
+</body>
+</html>

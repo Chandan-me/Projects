@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Portal</title>
+<link rel="stylesheet" href="Employee.css">
+</head>
+<body>
+
+<h1 class="title">🚀 Employee Self Registration Portal</h1>
+
+<input id="search" placeholder="🔍 Search employee...">
+
+<div class="container" id="formBox">
+<form id="form">
+
+<h3>Personal Info</h3>
+<div class="grid">
+<div class="field"><input id="fname" required placeholder=" "><label>First Name</label></div>
+<div class="field"><input id="lname" required placeholder=" "><label>Last Name</label></div>
+<div class="field"><input id="age" type="number" required placeholder=" "><label>Age</label></div>
+</div>
+
+<h3>Contact</h3>
+<div class="grid">
+<div class="field"><input id="phone" required placeholder=" "><label>Phone</label></div>
+<div class="field"><input id="address" required placeholder=" "><label>Address</label></div>
+<div class="field"><input id="state" placeholder=" "><label>State</label></div>
+<div class="field"><input id="city" placeholder=" "><label>City</label></div>
+<div class="field"><input id="pincode" placeholder=" "><label>Pincode</label></div>
+
+<div>
+<label>Photo</label>
+<input type="file" id="photo">
+<img id="preview">
+</div>
+</div>
+
+<h3>Employment</h3>
+<select id="role">
+<option>CEO</option>
+<option>Manager</option>
+<option>Developer</option>
+<option>Office Boy</option>
+</select>
+
+<div class="gender">
+<div class="gender-card" data="Male">👨 Male</div>
+<div class="gender-card" data="Female">👩 Female</div>
+</div>
+
+<div class="buttons">
+<button id="saveBtn" disabled>Submit</button>
+<button type="button" onclick="undoForm()">Undo</button>
+</div>
+
+</form>
+</div>
+
+<table>
+<thead>
+<tr><th>Name</th><th>Role</th><th>Phone</th><th>Actions</th></tr>
+</thead>
+<tbody id="table"></tbody>
+</table>
+
+<div id="modal" class="modal">
+<div class="modal-box">
+<span class="close" onclick="closeModal()">❌</span>
+<h3>Edit</h3>
+<input id="editF">
+<input id="editL">
+<input id="editPhone">
+<button onclick="update()">Update</button>
+<button onclick="undoEdit()">Undo</button>
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script src="Employee.js"></script>
+</body>
+</html>
