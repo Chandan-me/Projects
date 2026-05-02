@@ -101,6 +101,10 @@ function saveEmployees(){
     localStorage.setItem(STORAGE_KEY, JSON.stringify(employees));
 }
 
+function escapeAttribute(value){
+    return escapeHtml(value).replace(/\n/g, ' ');
+}
+
 function normalizeDateValue(value){
     if(!value) return '';
     if(/^\d{4}-\d{2}-\d{2}$/.test(value)) return value;
@@ -225,21 +229,23 @@ form.addEventListener('submit', e => {
 function render(filter = ''){
     tableBody.innerHTML = '';
     employees
-        .filter(emp => {
+        .map((emp, index) => ({ emp, index }))
+        .filter(({ emp }) => {
             const searchText = `${emp.id} ${emp.firstName} ${emp.lastName}`.toLowerCase();
             return searchText.includes(filter.toLowerCase());
         })
-        .forEach((emp, i) => {
+        .forEach(({ emp, index }) => {
             const name = `${emp.firstName} ${emp.lastName}`.trim();
             tableBody.innerHTML += `\
             <tr>\
+                <td>${emp.photoData ? `<img src="${escapeHtml(emp.photoData)}" alt="${escapeHtml(name || 'Employee photo')}" class="employee-avatar">` : '<div class="employee-avatar employee-avatar--placeholder">👤</div>'}</td>\
                 <td>${escapeHtml(emp.id || '')}</td>\
                 <td>${escapeHtml(name)}</td>\
                 <td>${escapeHtml(emp.role || '')}</td>\
                 <td>${escapeHtml(emp.email || emp.contactEmail || '')}</td>\
                 <td>\
-                    <button class="edit" onclick="edit(${i})">Edit</button>\
-                    <button class="delete" onclick="removeEmp(${i})">Delete</button>\
+                    <button class="edit" onclick="edit(${index})">Edit</button>\
+                    <button class="delete" onclick="removeEmp(${index})">Delete</button>\
                 </td>\
             </tr>`;
         });
@@ -249,6 +255,168 @@ function render(filter = ''){
 function escapeHtml(str){
     if(!str) return '';
     return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[s]);
+}
+
+function buildExportCell(value){
+    return `<td>${escapeHtml(value)}</td>`;
+}
+
+function buildEmployeeSpreadsheetHtml(data){
+    const rows = data.map((emp) => {
+        const photoCell = emp.photoData
+            ? `<td class="photo-cell"><img src="${escapeAttribute(emp.photoData)}" alt="${escapeAttribute(`${emp.firstName || ''} ${emp.lastName || ''}`.trim() || 'Employee photo')}" class="export-avatar"></td>`
+            : '<td class="photo-cell"><div class="export-avatar export-avatar--placeholder">\u{1F464}</div></td>';
+
+        return `
+            <tr>
+                ${photoCell}
+                ${buildExportCell(emp.id || '')}
+                ${buildExportCell(emp.firstName || '')}
+                ${buildExportCell(emp.lastName || '')}
+                ${buildExportCell(emp.role || '')}
+                ${buildExportCell(emp.email || emp.contactEmail || '')}
+                ${buildExportCell(emp.fatherName || '')}
+                ${buildExportCell(emp.motherName || '')}
+                ${buildExportCell(emp.street || '')}
+                ${buildExportCell(emp.street2 || '')}
+                ${buildExportCell(emp.area || '')}
+                ${buildExportCell(emp.city || '')}
+                ${buildExportCell(emp.state || '')}
+                ${buildExportCell(emp.postal || '')}
+                ${buildExportCell(emp.phone || '')}
+                ${buildExportCell(emp.whatsappPhone || '')}
+                ${buildExportCell(emp.aadhaarNumber || '')}
+                ${buildExportCell(emp.panNumber || '')}
+                ${buildExportCell(emp.spouseName || '')}
+                ${buildExportCell(normalizeDateValue(emp.dob))}
+                ${buildExportCell(emp.age || '')}
+                ${buildExportCell(emp.gender || '')}
+                ${buildExportCell(emp.maritalStatus || '')}
+            </tr>`;
+    }).join('');
+
+    return `<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="application/vnd.ms-excel; charset=utf-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #111827;
+        }
+        h1 {
+            margin: 0 0 8px;
+            font-size: 20px;
+        }
+        .meta {
+            margin: 0 0 16px;
+            color: #6b7280;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 8px 10px;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+        th {
+            background: #111827;
+            color: #ffffff;
+            text-align: left;
+            white-space: nowrap;
+        }
+        td {
+            background: #ffffff;
+        }
+        .photo-cell {
+            width: 56px;
+            text-align: center;
+        }
+        .export-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #cbd5e1;
+            display: inline-block;
+        }
+        .export-avatar--placeholder {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #e5e7eb;
+            color: #374151;
+            font-size: 18px;
+            line-height: 1;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Employee Records</h1>
+    <p class="meta">Exported on ${new Date().toLocaleString()}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Photo</th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Father Name</th>
+                <th>Mother Name</th>
+                <th>Street</th>
+                <th>Street 2</th>
+                <th>Area</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal</th>
+                <th>Phone</th>
+                <th>WhatsApp</th>
+                <th>Aadhaar</th>
+                <th>PAN</th>
+                <th>Spouse Name</th>
+                <th>DOB</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Marital Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            ${rows || '<tr><td colspan="24">No employee data available</td></tr>'}
+        </tbody>
+    </table>
+</body>
+</html>`;
+}
+
+function downloadEmployeesSpreadsheet(){
+    if(!employees.length){
+        showToast('No employee data to export');
+        return;
+    }
+
+    const exportHtml = buildEmployeeSpreadsheetHtml(employees);
+    const blob = new Blob([exportHtml], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const fileName = `employee-records-${new Date().toISOString().slice(0, 10)}.xls`;
+
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    showToast('Excel file downloaded');
 }
 
 // Edit flow: open modal and populate
@@ -769,4 +937,17 @@ photo.addEventListener("change", function () {
 
 document.getElementById("resetBtn").onclick = () => {
     document.querySelector("form").reset();
+    currentFormPhotoData = '';
+    currentFormPhotoName = '';
+    if(filePreview){
+        filePreview.style.display = 'none';
+        const previewText = document.querySelector('.file-drop-text');
+        if(previewText) previewText.style.display = 'block';
+        const thumb = filePreview.querySelector('img.file-thumb');
+        if(thumb) thumb.remove();
+    }
+};
+
+document.getElementById("draftBtn").onclick = () => {
+    downloadEmployeesSpreadsheet();
 };

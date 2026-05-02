@@ -256,9 +256,9 @@
 
                 <div class="btn-top">
 
-                    <button id="resetBtn">Reset</button>
+                    <button id="resetBtn" type="button">Reset</button>
 
-                    <button id="draftBtn">Save Draft</button>
+                    <button id="draftBtn" type="button">Download Excel</button>
 
                 </div>
 
@@ -276,6 +276,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Photo</th>
                     <th>ID</th>
                     <th style="cursor:pointer;" onclick="sortByName()">Name ⬍</th>
                     <th>Role</th>
@@ -298,22 +299,22 @@
 
         <div class="name-row">
             <div class="input-group">
-                <input type="text" id="editFirstName">
+                <input type="text" id="editFirstName" required>
                 <label>First Name</label>
             </div>
             <div class="input-group">
-                <input type="text" id="editLastName">
+                <input type="text" id="editLastName" required>
                 <label>Last Name</label>
             </div>
         </div>
 <br>
         <div class="input-group">
-            <input type="text" id="editRole">
+            <input type="text" id="editRole" required>
             <label>Role</label>
         </div>
  <br>
         <div class="input-group">
-            <input type="email" id="editEmail">
+            <input type="email" id="editEmail" required>
             <label>Email</label>
         </div>
  
